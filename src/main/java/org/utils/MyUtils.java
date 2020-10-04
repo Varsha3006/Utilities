@@ -8,13 +8,17 @@ import java.util.List;
 
 public class MyUtils {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidStringInputException {
         StringParser sp = new StringParser();
 
         String str = "Hello|World|How are|you all";
 
-        List<String> stringParts = sp.splitString(str, "\\|");
-
+        List<String> stringParts = null;
+        try {
+            stringParts = sp.splitString(str, "\\|");
+        } catch (InvalidStringInputException e) {
+            System.out.println("Invalid input given, please check your input");
+        }
         for (String part : stringParts) {
             System.out.println(part);
         }
